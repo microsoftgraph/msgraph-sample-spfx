@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ms-graph-sp-fx-client-side-solution",
+    "id": "dfb230b7-4f61-431f-9b65-a34e83922663",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/ms-graph-sp-fx.sppkg"
+  }
+}

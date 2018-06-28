@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-persona-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphPersona/GraphPersonaWebPart.js",
+          "manifest": "./src/webparts/graphPersona/GraphPersonaWebPart.manifest.json"
+        }
+      ]
+    },
+    "graph-events-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphEventsList/GraphEventsListWebPart.js",
+          "manifest": "./src/webparts/graphEventsList/GraphEventsListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphPersonaWebPartStrings": "lib/webparts/graphPersona/loc/{locale}.js",
+    "GraphEventsListWebPartStrings": "lib/webparts/graphEventsList/loc/{locale}.js"
+  }
+}
