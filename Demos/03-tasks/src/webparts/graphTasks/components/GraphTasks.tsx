@@ -9,7 +9,7 @@ import { MSGraphClient } from '@microsoft/sp-client-preview';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import { List } from 'office-ui-fabric-react/lib/List';
-
+import { format } from 'date-fns';
 
 export default class GraphTasks extends React.Component<IGraphTasksProps, IGraphTasksState> {
 
@@ -35,7 +35,7 @@ export default class GraphTasks extends React.Component<IGraphTasksProps, IGraph
     return (
       <div>
         <h3>{item.title}</h3>
-        <strong>Due:</strong> {item.dueDateTime}
+        <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM Mo, YYYY at h:mm A')}
       </div>
     );
   }

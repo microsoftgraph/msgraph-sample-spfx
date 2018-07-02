@@ -62,22 +62,40 @@ In this demo you will show a new SPFx project with a single client-side web part
 
         ![Screenshot of the SharePoint Online permission approval](../../Images/spo-admin-portal-03.png)
 
-1. Test the web part
-    1. In the command prompt for the project, execute the following command to start the local web server:
+1. Test the web part:
 
-        ```shell
-        gulp serve --nobrowser
-        ```
+    >NOTE: The SharePoint Framework includes a locally hosted & SharePoint Online hosted workbench for testing custom solutions. However, the workbench will not work the first time when testing solutions that utilize the Microsoft due to nuances with how the workbench operates and authentication requirements. Therefore, the first time you test a Microsoft Graph enabled SPFx solution, you will need to test them in a real modern page.
+    >
+    >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
-    1. In a browser, navigate to one of your SharePoint Online site's hosted workbench located at **/_layouts/15/workbench.aspx**
-    1. In the browser, select the Web part icon button to open the list of available web parts:
+    1. Setup environment to test the web part on a real SharePoint Online modern page:
 
-        ![Screenshot of adding the web part to the hosted workbench](../../Images/graph-persona-01.png)
+        1. In a browser, navigate to a SharePoint Online site.
+        1. In the site navigation, select the **Pages** library.
+        1. Select an existing page (*option 2 in the following image*), or create a new page (*option 1 in the following image*) in the library to test the web part on.
 
-    1. Locate the **GraphEventList** web part and select it
+            ![Screenshot of the SharePoint Online Pages library](../../Images/graph-test-01.png)
 
-        ![Screenshot of adding the web part to the hosted workbench](../../Images/graph-eventList-01.png)
+            *Continue with the test by skipping the next section to add the web part to the page.*
 
-    1. When the page loads, notice after a brief delay, it will display the current user's calendar events in the list
+    1. Setup environment to test the from the local webserver and hosted workbench:
+        1. In the command prompt for the project, execute the following command to start the local web server:
 
-        ![Screenshot of the web part running in the hosted workbench](../../Images/graph-eventList-02.png)
+            ```shell
+            gulp serve --nobrowser
+            ```
+
+        1. In a browser, navigate to one of your SharePoint Online site's hosted workbench located at **/_layouts/15/workbench.aspx**
+
+    1. Add the web part to the page and test:
+        1. In the browser, select the Web part icon button to open the list of available web parts:
+
+            ![Screenshot of adding the web part to the hosted workbench](../../Images/graph-persona-01.png)
+
+        1. Locate the **GraphEventList** web part and select it
+
+            ![Screenshot of adding the web part to the hosted workbench](../../Images/graph-eventList-01.png)
+
+        1. When the page loads, notice after a brief delay, it will display the current user's calendar events in the list
+
+            ![Screenshot of the web part running in the hosted workbench](../../Images/graph-eventList-02.png)

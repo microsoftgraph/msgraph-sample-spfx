@@ -16,7 +16,7 @@
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Tasks.Read"
+        "scope": "Group.Read.All"
       }
     ]
   },
