@@ -16,6 +16,10 @@ In this lab you will create SharePoint Framework client-side web parts that call
 * [Show calendar events from Microsoft Graph in SPFx client-side web part](./Demos/02-events)
 * [Show Planner tasks from Microsoft Graph in SPFx client-side web part](./Demos/03-tasks)
 
+## Watch the Module
+
+This module has been recorded and is available in the Office Development YouTube channel: [Leveraging the Microsoft Graph JavaScript SDK from the SharePoint Framework](https://www.youtube.com/watch?v=U1JrBwP3vc8)
+
 ## Contributors
 
 |        Roles         |                        Author(s)                        |
@@ -28,6 +32,7 @@ In this lab you will create SharePoint Framework client-side web parts that call
 
 | Version |     Date      |       Comments       |
 | ------- | ------------- | -------------------- |
+| 1.1     | July 3, 2018  | Screencast added     |
 | 1.0     | June 28, 2018 | New module submitted |
 
 ## Disclaimer
