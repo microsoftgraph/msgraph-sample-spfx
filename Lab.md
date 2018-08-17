@@ -1,4 +1,4 @@
-# Build apps with the Microsoft Graph REST API
+# Leveraging the Microsoft Graph JavaScript SDK from the SharePoint Framework
 
 This module will introduce you to working with the Microsoft Graph REST API to access data in Office 365 using the SharePoint Framework (SPFx). You will build three SPFx client-side web parts in a single SharePoint framework solution.
 
