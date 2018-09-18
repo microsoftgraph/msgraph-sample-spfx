@@ -8,11 +8,11 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'GraphEventsListWebPartStrings';
-import GraphEventsList from './components/GraphEventsList';
+import GraphEventsList from './components/graphEventsList';
 import { IGraphEventsListProps } from './components/IGraphEventsListProps';
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+import { MSGraphClient } from '@microsoft/sp-http';
+    import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IGraphEventsListWebPartProps {
   description: string;
@@ -21,14 +21,17 @@ export interface IGraphEventsListWebPartProps {
 export default class GraphEventsListWebPart extends BaseClientSideWebPart<IGraphEventsListWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IGraphEventsListProps> = React.createElement(
-      GraphEventsList,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphEventsListProps> = React.createElement(
+        GraphEventsList,
+        {
+          graphClient: client
+        }
+      );
 
-    ReactDom.render(element, this.domElement);
+      ReactDom.render(element, this.domElement);
+    }); 
   }
 
   protected onDispose(): void {

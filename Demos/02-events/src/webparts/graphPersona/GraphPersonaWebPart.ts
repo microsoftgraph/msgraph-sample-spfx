@@ -11,7 +11,7 @@ import * as strings from 'GraphPersonaWebPartStrings';
 import GraphPersona from './components/GraphPersona';
 import { IGraphPersonaProps } from './components/IGraphPersonaProps';
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IGraphPersonaWebPartProps {
@@ -21,14 +21,17 @@ export interface IGraphPersonaWebPartProps {
 export default class GraphPersonaWebPart extends BaseClientSideWebPart<IGraphPersonaWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IGraphPersonaProps > = React.createElement(
-      GraphPersona,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
-
-    ReactDom.render(element, this.domElement);
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphPersonaProps> = React.createElement(
+        GraphPersona,
+        {
+          graphClient: client
+        }
+      );
+      
+      ReactDom.render(element, this.domElement);
+    });    
   }
 
   protected onDispose(): void {

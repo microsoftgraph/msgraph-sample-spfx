@@ -11,7 +11,7 @@ import * as strings from 'GraphTasksWebPartStrings';
 import GraphTasks from './components/GraphTasks';
 import { IGraphTasksProps } from './components/IGraphTasksProps';
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IGraphTasksWebPartProps {
@@ -21,14 +21,17 @@ export interface IGraphTasksWebPartProps {
 export default class GraphTasksWebPart extends BaseClientSideWebPart<IGraphTasksWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IGraphTasksProps > = React.createElement(
-      GraphTasks,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
-
-    ReactDom.render(element, this.domElement);
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphTasksProps> = React.createElement(
+        GraphTasks,
+        {
+          graphClient: client
+        }
+      );
+      
+      ReactDom.render(element, this.domElement);
+    });   
   }
 
   protected onDispose(): void {

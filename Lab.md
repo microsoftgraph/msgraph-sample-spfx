@@ -4,7 +4,7 @@ This module will introduce you to working with the Microsoft Graph REST API to a
 
 ## In this lab
 
-* [Show profile details from Microsoft Graph in SPFx client-side web part](#exercise1)
+* [Exercise 1: Show profile details from Microsoft Graph in SPFx client-side web part](#exercise-1-show-profile-details-from-microsoft-graph-in-spfx-client-side-web-part)
 * [Show calendar events from Microsoft Graph in SPFx client-side web part](#exercise2)
 * [Show Planner tasks from Microsoft Graph in SPFx client-side web part](#exercise3)
 
@@ -16,22 +16,22 @@ To complete this lab, you need the following:
   * If you do not have one, you obtain one (for free) by signing up to the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 * SharePoint Online environment
   * Refer to the SharePoint Framework documentation, specifically the **[Getting Started > Set up Office 365 Tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)** for the most current steps
-* Local development environment with the latest 
+* Local development environment with the latest
   * Refer to the SharePoint Framework documentation, specifically the **[Getting Started > Set up development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)** for the most current steps
-
-<a name="exercise1"></a>
 
 ## Exercise 1: Show profile details from Microsoft Graph in SPFx client-side web part
 
 In this exercise you will create a new SPFx project with a single client-side web part that uses React, [Fabric React](https://developer.microsoft.com/fabric) and the Microsoft Graph to display the currently logged in user's personal details in a familiar office [Persona](https://developer.microsoft.com/fabric#/components/persona) card.
 
-### Create the SPFx Solution
+### Create the Persona SPFx Solution
 
 1. Open a command prompt and change to the folder where you want to create the project.
-1. Run the SharePoint Yeoman generator by executing the following command:
+1. Run the SharePoint Yeoman generator by executing the following command
+
+    > Note: this lab requires the SharePoint Framework version 1.6 or later
 
     ```shell
-    yo @microsoft/sharepoint --plusbeta
+    yo @microsoft/sharepoint
     ```
 
     Use the following to complete the prompt that is displayed:
@@ -49,7 +49,7 @@ In this exercise you will create a new SPFx project with a single client-side we
 
 1. When NPM completes downloading all dependencies, open the project in Visual Studio Code.
 
-### Update Solution Dependencies
+### Update Persona Solution Dependencies
 
 1. Install the Microsoft Graph Typescript type declarations by executing the following statement on the command line:
 
@@ -78,7 +78,7 @@ In this exercise you will create a new SPFx project with a single client-side we
             @import '~office-ui-fabric-react/dist/sass/_References.scss';
             ```
 
-### Update the Web Part
+### Update the Persona Web Part
 
 Update the default web part to pass into the React component an instance of the Microsoft Graph client API:
 
@@ -86,7 +86,7 @@ Update the default web part to pass into the React component an instance of the 
 1. Add the following `import` statements after the existing `import` statements:
 
     ```ts
-    import { MSGraphClient } from '@microsoft/sp-client-preview';
+    import { MSGraphClient } from '@microsoft/sp-http';
     import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
     ```
 
@@ -95,26 +95,29 @@ Update the default web part to pass into the React component an instance of the 
     Replace the contents of the `render()` method with the following code to create an initialize a new instance fo the Microsoft Graph client:
 
     ```ts
-    const element: React.ReactElement<IGraphPersonaProps> = React.createElement(
-      GraphPersona,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphPersonaProps> = React.createElement(
+        GraphPersona,
+        {
+          graphClient: client
+        }
+      );
 
-    ReactDom.render(element, this.domElement);
+      ReactDom.render(element, this.domElement);
+    });
     ```
 
-### Implement the React Component
+### Implement the GraphPersona React Component
 
 1. After updating the public signature of the **GraphPersona** component, the public property interface of the component needs to be updated to accept the Microsoft Graph client:
     1. Open the **src\webparts\graphPersona\components\IGraphPersonaProps.tsx**
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
 
-        export interface IHelloWorldProps {
+        export interface IGraphPersonaProps {
           graphClient: MSGraphClient;
         }
         ```
@@ -126,7 +129,7 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
-        export interface IGraphPersonaProps {
+        export interface IGraphPersonaState {
           name: string;
           email: string;
           phone: string;
@@ -141,7 +144,7 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import { IGraphPersonaState } from './IGraphPersonaState';
 
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
         import {
@@ -223,7 +226,7 @@ Update the default web part to pass into the React component an instance of the 
     ```ts
     public componentDidMount(): void {
       this.props.graphClient
-        .api(`me`)
+        .api('me')
         .get((error: any, user: MicrosoftGraph.User, rawResponse?: any) => {
           this.setState({
             name: user.displayName,
@@ -242,7 +245,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-### Update the SPFx Package Permission Requests
+### Update the Persona SPFx Package Permission Requests
 
 The last step before testing is to notify SharePoint that upon deployment to production, this app requires permission to the Microsoft Graph to access the user's persona details.
 
@@ -258,7 +261,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     ]
     ```
 
-### Test the Solution
+### Test the Persona Solution
 
 1. Create the SharePoint package for deployment:
     1. Build the solution by executing the following on the command line:
@@ -348,7 +351,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
 
             ![Screenshot of the web part running in the hosted workbench](./Images/graph-persona-03.png)
 
-<a name="exercise2"></a>
+>Note: If you have multiple identities authenticated in the browser session the web part will fail as it doesn't know which identity to authorize.
 
 ## Exercise 2: Show calendar events from Microsoft Graph in SPFx client-side web part
 
@@ -356,13 +359,15 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 
 > This exercise assumes you completed exercise 1 and created a SPFx solution and configured the project. If not, complete the section [Create the SPFx Solution](#create-the-spfx-solution).
 
-## Add SPFx Component to Existing SPFx Solution
+## Add Events SPFx Component to Existing SPFx Solution
 
 1. Open a command prompt and change to the folder of the existing SPFx solution.
 1. Run the SharePoint Yeoman generator by executing the following command:
 
+    >Note: this lab requires the SharePoint Framework version 1.6 or later
+
     ```shell
-    yo @microsoft/sharepoint --plusbeta
+    yo @microsoft/sharepoint
     ```
 
     Use the following to complete the prompt that is displayed:
@@ -382,7 +387,7 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 
 1. Open the project in Visual Studio Code.
 
-### Update the Web Part
+### Update the Events Web Part
 
 Update the default web part to pass into the React component an instance of the Microsoft Graph client API:
 
@@ -390,7 +395,7 @@ Update the default web part to pass into the React component an instance of the 
 1. Add the following `import` statements after the existing `import` statements:
 
     ```ts
-    import { MSGraphClient } from '@microsoft/sp-client-preview';
+    import { MSGraphClient } from '@microsoft/sp-http';
     import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
     ```
 
@@ -399,24 +404,27 @@ Update the default web part to pass into the React component an instance of the 
     Replace the contents of the `render()` method with the following code to create an initialize a new instance fo the Microsoft Graph client:
 
     ```ts
-    const element: React.ReactElement<IGraphEventsListProps> = React.createElement(
-      GraphEventsList,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphEventsListProps> = React.createElement(
+        GraphEventsList,
+        {
+          graphClient: client
+        }
+      );
 
-    ReactDom.render(element, this.domElement);
+      ReactDom.render(element, this.domElement);
+    });
     ```
 
-### Implement the React Component
+### Implement the GraphEventsList React Component
 
 1. After updating the public signature of the **GraphEventsList** component, the public property interface of the component needs to be updated to accept the Microsoft Graph client:
     1. Open the **src\webparts\graphEventsList\components\IGraphEventsListProps.tsx**
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
 
         export interface IGraphEventsListProps {
           graphClient: MSGraphClient;
@@ -442,7 +450,7 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import { IGraphEventsListState } from './IGraphEventsListState';
 
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
         import { List } from 'office-ui-fabric-react/lib/List';
@@ -480,7 +488,7 @@ Update the default web part to pass into the React component an instance of the 
     ```ts
     public render(): React.ReactElement<IGraphEventsListProps> {
       return (
-        <List items={this.state.events} 
+        <List items={this.state.events}
               onRenderCell={this._onRenderEventCell} />
       );
     }
@@ -527,6 +535,11 @@ The last step before testing is to notify SharePoint that upon deployment to pro
       "resource": "Microsoft Graph",
       "scope": "Calendars.Read"
     }
+    ```
+1. Locate the `version` property and increment by 1.
+
+    ```json
+    "version": "1.0.0.1"
     ```
 
 ### Test the Solution
@@ -588,9 +601,18 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
-    1. Setup environment to test the web part on a real SharePoint Online modern page:
-
+    1. If this is an update to the existing package you will need to first update the app in your site collection.
         1. In a browser, navigate to a SharePoint Online site.
+        1. In the site navigation, select **Add an app**.
+        1. Select **From your Organization**. Find your solution which indicates you can't add the app, Click on **Find out why**.
+
+            ![Screenshot of From your Organization with application already installed](./Images/graph-app-update-01.png)
+
+        1. Note the indicator showing that there is a new version of the app. Select **GET IT**.
+
+            ![Screenshot of From your Organization with application already installed](./Images/graph-app-update-02.png)
+
+    1. Setup environment to test the web part on a real SharePoint Online modern page:
         1. In the site navigation, select the **Pages** library.
         1. Select an existing page (*option 2 in the following image*), or create a new page (*option 1 in the following image*) in the library to test the web part on.
 
@@ -620,8 +642,6 @@ The last step before testing is to notify SharePoint that upon deployment to pro
 
             ![Screenshot of the web part running in the hosted workbench](./Images/graph-eventList-02.png)
 
-<a name="exercise3"></a>
-
 ## Exercise 3: Show Planner tasks from Microsoft Graph in SPFx client-side web part
 
 In this exercise you add a client-side web part that uses React, [Fabric React](https://developer.microsoft.com/fabric) and the Microsoft Graph to an existing SPFx project that will display a list of the current user's tasks from Planner using the [List](https://developer.microsoft.com/fabric#/components/list) component.
@@ -634,7 +654,7 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 1. Run the SharePoint Yeoman generator by executing the following command:
 
     ```shell
-    yo @microsoft/sharepoint --plusbeta
+    yo @microsoft/sharepoint
     ```
 
     Use the following to complete the prompt that is displayed:
@@ -656,7 +676,7 @@ Update the default web part to pass into the React component an instance of the 
 1. Add the following `import` statements after the existing `import` statements:
 
     ```ts
-    import { MSGraphClient } from '@microsoft/sp-client-preview';
+    import { MSGraphClient } from '@microsoft/sp-http';
     import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
     ```
 
@@ -665,14 +685,17 @@ Update the default web part to pass into the React component an instance of the 
     Replace the contents of the `render()` method with the following code to create an initialize a new instance fo the Microsoft Graph client:
 
     ```ts
-    const element: React.ReactElement<IGraphTasksProps> = React.createElement(
-      GraphPersona,
-      {
-        graphClient: this.context.serviceScope.consume(MSGraphClient.serviceKey)
-      }
-    );
+    this.context.msGraphClientFactory.getClient()
+    .then((client: MSGraphClient): void => {
+      const element: React.ReactElement<IGraphTasksProps> = React.createElement(
+        GraphTasks,
+        {
+          graphClient: client
+        }
+      );
 
-    ReactDom.render(element, this.domElement);
+      ReactDom.render(element, this.domElement);
+    });
     ```
 
 ### Implement the React Component
@@ -682,7 +705,7 @@ Update the default web part to pass into the React component an instance of the 
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
 
         export interface IGraphTasksProps {
           graphClient: MSGraphClient;
@@ -708,7 +731,7 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import { IGraphTasksState } from './IGraphTasksState';
 
-        import { MSGraphClient } from '@microsoft/sp-client-preview';
+        import { MSGraphClient } from '@microsoft/sp-http';
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
         import { List } from 'office-ui-fabric-react/lib/List';
@@ -754,11 +777,11 @@ Update the default web part to pass into the React component an instance of the 
 
 1. The code in the List card references a utility methods to control rendering of the list cell. Add the following to method to the `GraphTasks` class that will be used to render the cell accordingly:
 
-    ```ts
+    ```tsx
     private _onRenderEventCell(item: MicrosoftGraph.PlannerTask, index: number | undefined): JSX.Element {
       return (
         <div>
-          <h3>{item.subject}</h3>
+          <h3>{item.title}</h3>
           <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM Mo, YYYY at h:mm A')}
         </div>
       );
@@ -796,6 +819,12 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     ```
 
     >Note: There are multiple *"task"* related permissions (scopes) used with the Microsoft Graph. Planner tasks are accessible via the `Groups.Read.All` scope while Outlook/Exchange tasks are accessible via the `Tasks.Read` scope.
+
+1. Locate the `version` property and increment by 1.
+
+    ```json
+    "version": "1.0.0.2"
+    ```
 
 ### Test the Solution
 
@@ -842,9 +871,18 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
-    1. Setup environment to test the web part on a real SharePoint Online modern page:
-
+    1. If this is an update to the existing package you will need to first update the app in your site collection.
         1. In a browser, navigate to a SharePoint Online site.
+        1. In the site navigation, select **Add an app**.
+        1. Select **From your Organization**. Find your solution which indicates you can't add the app, Click on **Find out why**.
+
+            ![Screenshot of From your Organization with application already installed](./Images/graph-app-update-01.png)
+
+        1. Note the indicator showing that there is a new version of the app. Select **GET IT**.
+
+            ![Screenshot of From your Organization with application already installed](./Images/graph-app-update-02.png)
+
+    1. Setup environment to test the web part on a real SharePoint Online modern page:
         1. In the site navigation, select the **Pages** library.
         1. Select an existing page (*option 2 in the following image*), or create a new page (*option 1 in the following image*) in the library to test the web part on.
 

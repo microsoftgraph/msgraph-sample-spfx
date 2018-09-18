@@ -5,17 +5,16 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import { IGraphTasksState } from './IGraphTasksState';
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import { List } from 'office-ui-fabric-react/lib/List';
 import { format } from 'date-fns';
 
 export default class GraphTasks extends React.Component<IGraphTasksProps, IGraphTasksState> {
-
   constructor(props: IGraphTasksProps) {
     super(props);
-
+  
     this.state = {
       tasks: []
     };
@@ -42,7 +41,7 @@ export default class GraphTasks extends React.Component<IGraphTasksProps, IGraph
 
   public render(): React.ReactElement<IGraphTasksProps> {
     return (
-      <List items={this.state.tasks} 
+      <List items={this.state.tasks}
             onRenderCell={this._onRenderEventCell} />
     );
   }

@@ -4,8 +4,10 @@ import { IGraphPersonaProps } from './IGraphPersonaProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import { IGraphPersonaState } from './IGraphPersonaState';
-import { MSGraphClient } from '@microsoft/sp-client-preview';
+
+import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+
 import {
   Persona,
   PersonaSize
@@ -13,10 +15,9 @@ import {
 import { Link } from 'office-ui-fabric-react/lib/components/Link';
 
 export default class GraphPersona extends React.Component<IGraphPersonaProps, IGraphPersonaState> {
-
   constructor(props: IGraphPersonaProps) {
     super(props);
-
+  
     this.state = {
       name: '',
       email: '',
@@ -27,7 +28,7 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
 
   public componentDidMount(): void {
     this.props.graphClient
-      .api(`me`)
+      .api('me')
       .get((error: any, user: MicrosoftGraph.User, rawResponse?: any) => {
         this.setState({
           name: user.displayName,
@@ -35,7 +36,7 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
           phone: user.businessPhones[0]
         });
       });
-
+  
     this.props.graphClient
       .api('/me/photo/$value')
       .responseType('blob')
@@ -43,18 +44,6 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
         const blobUrl = window.URL.createObjectURL(rawResponse.xhr.response);
         this.setState({ image: blobUrl });
       });
-  }
-  
-  public render(): React.ReactElement<IGraphPersonaProps> {
-    return (
-      <Persona primaryText={this.state.name}
-               secondaryText={this.state.email}
-               onRenderSecondaryText={this._renderMail}
-               tertiaryText={this.state.phone}
-               onRenderTertiaryText={this._renderPhone}
-               imageUrl={this.state.image}
-               size={PersonaSize.size100} />
-    );
   }
 
   private _renderMail = () => {
@@ -64,7 +53,7 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
       return <div />;
     }
   }
-
+  
   private _renderPhone = () => {
     if (this.state.phone) {
       return <Link href={`tel:${this.state.phone}`}>{this.state.phone}</Link>;
@@ -73,4 +62,15 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
     }
   }
 
+  public render(): React.ReactElement<IGraphPersonaProps> {
+    return (
+      <Persona primaryText={this.state.name}
+              secondaryText={this.state.email}
+              onRenderSecondaryText={this._renderMail}
+              tertiaryText={this.state.phone}
+              onRenderTertiaryText={this._renderPhone}
+              imageUrl={this.state.image}
+              size={PersonaSize.size100} />
+    );
+  }
 }

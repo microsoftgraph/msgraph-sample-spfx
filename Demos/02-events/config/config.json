@@ -10,7 +10,7 @@
         }
       ]
     },
-    "graph-events-list-web-part": {
+    "graph-event-list-web-part": {
       "components": [
         {
           "entrypoint": "./lib/webparts/graphEventsList/GraphEventsListWebPart.js",
