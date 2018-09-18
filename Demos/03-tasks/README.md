@@ -8,7 +8,7 @@ In this demo you will show a new SPFx project with a single client-side web part
 1. Execute the following command to download all necessary dependencies
 
     ```shell
-    npm instal
+    npm install
     ```
 
 1. Create the SharePoint package for deployment:
