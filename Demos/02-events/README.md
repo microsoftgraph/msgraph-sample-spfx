@@ -68,9 +68,18 @@ In this demo you will show a new SPFx project with a single client-side web part
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
-    1. Setup environment to test the web part on a real SharePoint Online modern page:
-
+    1. If this is an update to the existing package you will need to first update the app in your site collection.
         1. In a browser, navigate to a SharePoint Online site.
+        1. In the site navigation, select **Add an app**.
+        1. Select **From your Organization**. Find your solution which indicates you can't add the app, Click on **Find out why**.
+
+            ![Screenshot of From your Organization with application already installed](../../Images/graph-app-update-01.png)
+
+        1. Note the indicator showing that there is a new version of the app. Select **GET IT**.
+
+            ![Screenshot of From your Organization with application already installed](../../Images/graph-app-update-02.png)
+
+    1. Setup environment to test the web part on a real SharePoint Online modern page:
         1. In the site navigation, select the **Pages** library.
         1. Select an existing page (*option 2 in the following image*), or create a new page (*option 1 in the following image*) in the library to test the web part on.
 

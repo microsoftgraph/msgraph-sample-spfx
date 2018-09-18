@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "ms-graph-sp-fx-client-side-solution",
-    "id": "dfb230b7-4f61-431f-9b65-a34e83922663",
-    "version": "1.0.0.0",
+    "id": "129c8ccd-4dea-4b50-9a4d-96e04563ccd7",
+    "version": "1.0.0.2",
     "includeClientSideAssets": true,
     "webApiPermissionRequests": [
       {
