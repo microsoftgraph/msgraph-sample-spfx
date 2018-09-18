@@ -28,7 +28,7 @@ In this exercise you will create a new SPFx project with a single client-side we
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Yeoman generator by executing the following command
 
-    >Note: this lab requires the SharePoint Framework version 1.6 or later
+    > Note: this lab requires the SharePoint Framework version 1.6 or later
 
     ```shell
     yo @microsoft/sharepoint

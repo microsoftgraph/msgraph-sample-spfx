@@ -2,8 +2,6 @@
 
 This module will introduce you to working with the Microsoft Graph REST API to access data in Office 365 by building a SharePoint Framework client-side web part.
 
-> Note: At the time of publishing this module, the Microsoft Graph client support in the SharePoint Framework is in preview and requires using beta libraries, packages and APIs. When the SPFx releases the Microsoft Graph support to Generally Available (GA), this module will be updated to reflect the latest guidance, libraries and APIs available.
-
 ## Lab - Leveraging the Microsoft Graph JavaScript SDK from the SharePoint Framework
 
 In this lab you will create SharePoint Framework client-side web parts that call the Microsoft Graph JavaScript SDK.
@@ -30,10 +28,11 @@ This module has been recorded and is available in the Office Development YouTube
 
 ## Version history
 
-| Version |     Date      |       Comments       |
-| ------- | ------------- | -------------------- |
-| 1.1     | July 3, 2018  | Screencast added     |
-| 1.0     | June 28, 2018 | New module submitted |
+| Version |        Date        |        Comments        |
+| ------- | ------------------ | ---------------------- |
+| 1.2     | September 18, 2018 | 2019Q1 content refresh |
+| 1.1     | July 3, 2018       | Screencast added       |
+| 1.0     | June 28, 2018      | New module submitted   |
 
 ## Disclaimer
 
