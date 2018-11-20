@@ -10,7 +10,8 @@
         "resource": "Microsoft Graph",
         "scope": "User.ReadBasic.All"
       }
-    ]
+    ],
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/ms-graph-sp-fx.sppkg"

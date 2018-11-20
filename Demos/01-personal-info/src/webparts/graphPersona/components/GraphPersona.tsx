@@ -41,7 +41,7 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
       .api('/me/photo/$value')
       .responseType('blob')
       .get((err: any, photoResponse: any, rawResponse: any) => {
-        const blobUrl = window.URL.createObjectURL(rawResponse.xhr.response);
+        const blobUrl = window.URL.createObjectURL(photoResponse);
         this.setState({ image: blobUrl });
       });
   }

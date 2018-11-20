@@ -17,7 +17,7 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "GraphPersona" },
-    "description": { "default": "Display current user&#39;s persona details in a Fabric REact Persona card" },
+    "description": { "default": "Display current user&#39;s persona details in a Fabric React Persona card" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "GraphPersona"
