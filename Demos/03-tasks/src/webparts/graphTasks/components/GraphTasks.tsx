@@ -1,11 +1,8 @@
 import * as React from 'react';
-import styles from './GraphTasks.module.scss';
 import { IGraphTasksProps } from './IGraphTasksProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import { IGraphTasksState } from './IGraphTasksState';
 
-import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import { List } from 'office-ui-fabric-react/lib/List';
@@ -14,7 +11,7 @@ import { format } from 'date-fns';
 export default class GraphTasks extends React.Component<IGraphTasksProps, IGraphTasksState> {
   constructor(props: IGraphTasksProps) {
     super(props);
-  
+
     this.state = {
       tasks: []
     };
@@ -34,7 +31,7 @@ export default class GraphTasks extends React.Component<IGraphTasksProps, IGraph
     return (
       <div>
         <h3>{item.title}</h3>
-        <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM Mo, YYYY at h:mm A')}
+        <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM DD, YYYY at h:mm A')}
       </div>
     );
   }

@@ -5,8 +5,8 @@ This module will introduce you to working with the Microsoft Graph REST API to a
 ## In this lab
 
 * [Exercise 1: Show profile details from Microsoft Graph in SPFx client-side web part](#exercise-1-show-profile-details-from-microsoft-graph-in-spfx-client-side-web-part)
-* [Show calendar events from Microsoft Graph in SPFx client-side web part](#exercise2)
-* [Show Planner tasks from Microsoft Graph in SPFx client-side web part](#exercise3)
+* [Exercise 2: Show calendar events from Microsoft Graph in SPFx client-side web part](#exercise-2-show-calendar-events-from-microsoft-graph-in-spfx-client-side-web-part)
+* [Exercise 3: Show Planner tasks from Microsoft Graph in SPFx client-side web part](#exercise-3-show-planner-tasks-from-microsoft-graph-in-spfx-client-side-web-part)
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ In this exercise you will create a new SPFx project with a single client-side we
 1. Open a command prompt and change to the folder where you want to create the project.
 1. Run the SharePoint Yeoman generator by executing the following command
 
-    > Note: this lab requires the SharePoint Framework version 1.6 or later
+    > Note: this lab requires the SharePoint Framework version 1.7 or later
 
     ```shell
     yo @microsoft/sharepoint
@@ -40,6 +40,7 @@ In this exercise you will create a new SPFx project with a single client-side we
     * **Which baseline packages do you want to target for your component(s)?**: SharePoint Online only (latest)
     * **Where do you want to place the files?**: Use the current folder
     * **Do you want to allow the tenant admin the choice of being able to deploy the solution to all sites immediately without running any feature deployment or adding apps in sites?**: No
+    * **Will the components in the solution require permissions to access web APIs that are unique and not shared with other components in the tenant?**: No
     * **Which type of client-side component to create?**: WebPart
     * **What is your Web part name?**: GraphPersona
     * **What is your Web part description?**: Display current user's persona details in a Fabric React Persona card
@@ -87,7 +88,6 @@ Update the default web part to pass into the React component an instance of the 
 
     ```ts
     import { MSGraphClient } from '@microsoft/sp-http';
-    import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
     ```
 
 1. Locate the `render()` method. This method creates a new instance of a React element by passing in the component class and the properties to bind to it. The only property being set is the `description` property.
@@ -107,6 +107,7 @@ Update the default web part to pass into the React component an instance of the 
       ReactDom.render(element, this.domElement);
     });
     ```
+    >Note: the public property of the GraphPersona `graphClient` will be defined in the next step.
 
 ### Implement the GraphPersona React Component
 
@@ -123,12 +124,10 @@ Update the default web part to pass into the React component an instance of the 
         ```
 
 1. Create a new interface that will keep track of the state of the component's state:
-    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphResponse\components\**.
+    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphResponse\components\\**.
     1. Add the following code to define a new state object that will be used by the component:
 
         ```ts
-        import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-
         export interface IGraphPersonaState {
           name: string;
           email: string;
@@ -258,7 +257,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
         "resource": "Microsoft Graph",
         "scope": "User.ReadBasic.All"
       }
-    ]
+    ],
     ```
 
 ### Test the Persona Solution
@@ -319,15 +318,22 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
-    1. Setup environment to test the web part on a real SharePoint Online modern page:
-
+    1. Add the web part to your site collection.
         1. In a browser, navigate to a SharePoint Online site.
+
+        1. In the Office 365 gear, select **Add an App**.
+
+        1. In site navigation, select **From your Organization**.
+
+        1. Select `ms-graph-sp-fx-client-side-solution` to add your web part.
+
+    1. Setup environment to test the web part on a real SharePoint Online modern page in the same site collection where you added your web part:
         1. In the site navigation, select the **Pages** library.
         1. Select an existing page (*option 2 in the following image*), or create a new page (*option 1 in the following image*) in the library to test the web part on.
 
             ![Screenshot of the SharePoint Online Pages library](./Images/graph-test-01.png)
 
-            *Continue with the test by skipping the next section to add the web part to the page.*
+            *If you haven't cookied the Azure AD authentication process continue with the test by skipping the next section to add the web part to the page.*
 
     1. Setup environment to test the from the local webserver and hosted workbench:
         1. In the command prompt for the project, execute the following command to start the local web server:
@@ -364,7 +370,7 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 1. Open a command prompt and change to the folder of the existing SPFx solution.
 1. Run the SharePoint Yeoman generator by executing the following command:
 
-    >Note: this lab requires the SharePoint Framework version 1.6 or later
+    >Note: this lab requires the SharePoint Framework version 1.7 or later
 
     ```shell
     yo @microsoft/sharepoint
@@ -432,7 +438,7 @@ Update the default web part to pass into the React component an instance of the 
         ```
 
 1. Create a new interface that will keep track of the state of the component's state:
-    1. Create a new file **IGraphEventsListState.ts** and save it to the folder: **src\webparts\graphEventsList\components\**.
+    1. Create a new file **IGraphEventsListState.ts** and save it to the folder: **src\webparts\graphEventsList\components\\**.
     1. Add the following code to define a new state object that will be used by the component:
 
         ```ts
@@ -450,7 +456,6 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import { IGraphEventsListState } from './IGraphEventsListState';
 
-        import { MSGraphClient } from '@microsoft/sp-http';
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
         import { List } from 'office-ui-fabric-react/lib/List';
@@ -496,12 +501,12 @@ Update the default web part to pass into the React component an instance of the 
 
 1. The code in the List card references a utility methods to control rendering of the list cell. Add the following to method to the `GraphEventsList` class that will be used to render the cell accordingly:
 
-    ```ts
+    ```js
     private _onRenderEventCell(item: MicrosoftGraph.Event, index: number | undefined): JSX.Element {
       return (
         <div>
           <h3>{item.subject}</h3>
-          {format( new Date(item.start.dateTime), 'MMMM Mo, YYYY h:mm A')} - {format( new Date(item.end.dateTime), 'h:mm A')}
+          {format( new Date(item.start.dateTime), 'MMMM DD, YYYY h:mm A')} - {format( new Date(item.end.dateTime), 'h:mm A')}
         </div>
       );
     }
@@ -652,6 +657,7 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 
 1. Open a command prompt and change to the folder of the existing SPFx solution.
 1. Run the SharePoint Yeoman generator by executing the following command:
+    >Note: this lab requires the SharePoint Framework version 1.7 or later
 
     ```shell
     yo @microsoft/sharepoint
@@ -731,7 +737,6 @@ Update the default web part to pass into the React component an instance of the 
         ```ts
         import { IGraphTasksState } from './IGraphTasksState';
 
-        import { MSGraphClient } from '@microsoft/sp-http';
         import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
         import { List } from 'office-ui-fabric-react/lib/List';
@@ -782,7 +787,7 @@ Update the default web part to pass into the React component an instance of the 
       return (
         <div>
           <h3>{item.title}</h3>
-          <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM Mo, YYYY at h:mm A')}
+          <strong>Due:</strong> {format( new Date(item.dueDateTime), 'MMMM DD, YYYY at h:mm A')}
         </div>
       );
     }

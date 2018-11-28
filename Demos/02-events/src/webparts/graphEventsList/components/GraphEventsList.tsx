@@ -1,11 +1,8 @@
 import * as React from 'react';
-import styles from './GraphEventsList.module.scss';
 import { IGraphEventsListProps } from './IGraphEventsListProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import { IGraphEventsListState } from './IGraphEventsListState';
 
-import { MSGraphClient } from '@microsoft/sp-client-preview';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import { List } from 'office-ui-fabric-react/lib/List';
@@ -14,7 +11,7 @@ import { format } from 'date-fns';
 export default class GraphEventsList extends React.Component<IGraphEventsListProps, IGraphEventsListState> {
   constructor(props: IGraphEventsListProps) {
     super(props);
-  
+
     this.state = {
       events: []
     };
@@ -34,14 +31,14 @@ export default class GraphEventsList extends React.Component<IGraphEventsListPro
     return (
       <div>
         <h3>{item.subject}</h3>
-        {format( new Date(item.start.dateTime), 'MMMM Mo, YYYY h:mm A')} - {format( new Date(item.end.dateTime), 'h:mm A')}
+        {format( new Date(item.start.dateTime), 'MMMM DD, YYYY h:mm A')} - {format( new Date(item.end.dateTime), 'h:mm A')}
       </div>
     );
   }
 
   public render(): React.ReactElement<IGraphEventsListProps> {
     return (
-      <List items={this.state.events} 
+      <List items={this.state.events}
             onRenderCell={this._onRenderEventCell} />
     );
   }

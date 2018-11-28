@@ -12,7 +12,6 @@ import GraphPersona from './components/GraphPersona';
 import { IGraphPersonaProps } from './components/IGraphPersonaProps';
 
 import { MSGraphClient } from '@microsoft/sp-http';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IGraphPersonaWebPartProps {
   description: string;
@@ -29,9 +28,9 @@ export default class GraphPersonaWebPart extends BaseClientSideWebPart<IGraphPer
           graphClient: client
         }
       );
-      
+
       ReactDom.render(element, this.domElement);
-    });    
+    });
   }
 
   protected onDispose(): void {
