@@ -238,7 +238,7 @@ Update the default web part to pass into the React component an instance of the 
         .api('/me/photo/$value')
         .responseType('blob')
         .get((err: any, photoResponse: any, rawResponse: any) => {
-          const blobUrl = window.URL.createObjectURL(rawResponse.xhr.response);
+          const blobUrl = window.URL.createObjectURL(photoResponse);
           this.setState({ image: blobUrl });
         });
     }
@@ -333,17 +333,6 @@ The last step before testing is to notify SharePoint that upon deployment to pro
 
             ![Screenshot of the SharePoint Online Pages library](./Images/graph-test-01.png)
 
-            *If you haven't cookied the Azure AD authentication process continue with the test by skipping the next section to add the web part to the page.*
-
-    1. Setup environment to test the from the local webserver and hosted workbench:
-        1. In the command prompt for the project, execute the following command to start the local web server:
-
-            ```shell
-            gulp serve --nobrowser
-            ```
-
-        1. In a browser, navigate to one of your SharePoint Online site's hosted workbench located at **/_layouts/15/workbench.aspx**
-
     1. Add the web part to the page and test:
         1. In the browser, select the Web part icon button to open the list of available web parts:
 
@@ -358,6 +347,15 @@ The last step before testing is to notify SharePoint that upon deployment to pro
             ![Screenshot of the web part running in the hosted workbench](./Images/graph-persona-03.png)
 
 >Note: If you have multiple identities authenticated in the browser session the web part will fail as it doesn't know which identity to authorize.
+
+    1. Setup environment to test the from the local webserver and hosted workbench:
+        1. In the command prompt for the project, execute the following command to start the local web server:
+
+            ```shell
+            gulp serve --nobrowser
+            ```
+
+        1. In a browser, navigate to one of your SharePoint Online site's hosted workbench located at **/_layouts/15/workbench.aspx**
 
 ## Exercise 2: Show calendar events from Microsoft Graph in SPFx client-side web part
 
@@ -438,7 +436,7 @@ Update the default web part to pass into the React component an instance of the 
         ```
 
 1. Create a new interface that will keep track of the component's state:
-    1. Create a new file **IGraphEventsListState.ts** and save it to the folder: **src\webparts\graphEventsList\components\\**.
+    1. Create a new file **IGraphEventsListState.ts** and save it to the folder: **src\webparts\graphEventsList\components**.
     1. Add the following code to define a new state object that will be used by the component:
 
         ```ts
