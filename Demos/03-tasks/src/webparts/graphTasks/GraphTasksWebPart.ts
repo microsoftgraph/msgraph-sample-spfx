@@ -29,9 +29,9 @@ export default class GraphTasksWebPart extends BaseClientSideWebPart<IGraphTasks
           graphClient: client
         }
       );
-      
+
       ReactDom.render(element, this.domElement);
-    });   
+    });
   }
 
   protected onDispose(): void {

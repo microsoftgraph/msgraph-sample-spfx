@@ -1,11 +1,8 @@
 import * as React from 'react';
-import styles from './GraphPersona.module.scss';
 import { IGraphPersonaProps } from './IGraphPersonaProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import { IGraphPersonaState } from './IGraphPersonaState';
 
-import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 import {
@@ -17,7 +14,7 @@ import { Link } from 'office-ui-fabric-react/lib/components/Link';
 export default class GraphPersona extends React.Component<IGraphPersonaProps, IGraphPersonaState> {
   constructor(props: IGraphPersonaProps) {
     super(props);
-  
+
     this.state = {
       name: '',
       email: '',
@@ -36,12 +33,12 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
           phone: user.businessPhones[0]
         });
       });
-  
+
     this.props.graphClient
       .api('/me/photo/$value')
       .responseType('blob')
       .get((err: any, photoResponse: any, rawResponse: any) => {
-        const blobUrl = window.URL.createObjectURL(rawResponse.xhr.response);
+        const blobUrl = window.URL.createObjectURL(photoResponse);
         this.setState({ image: blobUrl });
       });
   }
@@ -53,7 +50,7 @@ export default class GraphPersona extends React.Component<IGraphPersonaProps, IG
       return <div />;
     }
   }
-  
+
   private _renderPhone = () => {
     if (this.state.phone) {
       return <Link href={`tel:${this.state.phone}`}>{this.state.phone}</Link>;

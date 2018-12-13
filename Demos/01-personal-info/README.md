@@ -67,6 +67,15 @@ In this demo you will show a new SPFx project with a single client-side web part
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
+    1. Add the web part to your site collection.
+        1. In a browser, navigate to a SharePoint Online site.
+
+        1. In the Office 365 gear, select **Add an App**.
+
+        1. In site navigation, select **From your Organization**.
+
+        1. Select `ms-graph-sp-fx-client-side-solution` to add your web part.
+        
     1. Setup environment to test the web part on a real SharePoint Online modern page:
 
         1. In a browser, navigate to a SharePoint Online site.
@@ -75,7 +84,7 @@ In this demo you will show a new SPFx project with a single client-side web part
 
             ![Screenshot of the SharePoint Online Pages library](../../Images/graph-test-01.png)
 
-            *Continue with the test by skipping the next section to add the web part to the page.*
+            *If you haven't cookied the Azure AD authentication process continue with the test by skipping the next section to add the web part to the page.*
 
     1. Setup environment to test the from the local webserver and hosted workbench:
         1. In the command prompt for the project, execute the following command to start the local web server:

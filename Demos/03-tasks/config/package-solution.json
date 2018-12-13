@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "ms-graph-sp-fx-client-side-solution",
-    "id": "129c8ccd-4dea-4b50-9a4d-96e04563ccd7",
+    "id": "077bd998-bec8-413a-8c44-1981ef9787b2",
     "version": "1.0.0.2",
     "includeClientSideAssets": true,
     "webApiPermissionRequests": [
@@ -18,7 +18,8 @@
         "resource": "Microsoft Graph",
         "scope": "Group.Read.All"
       }
-    ]
+    ],
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/ms-graph-sp-fx.sppkg"

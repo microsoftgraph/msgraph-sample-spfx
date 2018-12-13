@@ -8,11 +8,11 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'GraphEventsListWebPartStrings';
-import GraphEventsList from './components/graphEventsList';
+import GraphEventsList from './components/GraphEventsList';
 import { IGraphEventsListProps } from './components/IGraphEventsListProps';
 
 import { MSGraphClient } from '@microsoft/sp-http';
-    import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IGraphEventsListWebPartProps {
   description: string;
@@ -31,7 +31,7 @@ export default class GraphEventsListWebPart extends BaseClientSideWebPart<IGraph
       );
 
       ReactDom.render(element, this.domElement);
-    }); 
+    });
   }
 
   protected onDispose(): void {
