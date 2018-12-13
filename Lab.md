@@ -92,7 +92,7 @@ Update the default web part to pass into the React component an instance of the 
 
 1. Locate the `render()` method. This method creates a new instance of a React element by passing in the component class and the properties to bind to it. The only property being set is the `description` property.
 
-    Replace the contents of the `render()` method with the following code to create an initialize a new instance fo the Microsoft Graph client:
+    Replace the contents of the `render()` method with the following code to create and initialize a new instance of the Microsoft Graph client:
 
     ```ts
     this.context.msGraphClientFactory.getClient()
@@ -112,7 +112,7 @@ Update the default web part to pass into the React component an instance of the 
 ### Implement the GraphPersona React Component
 
 1. After updating the public signature of the **GraphPersona** component, the public property interface of the component needs to be updated to accept the Microsoft Graph client:
-    1. Open the **src\webparts\graphPersona\components\IGraphPersonaProps.tsx**
+    1. Open the **src\webparts\graphPersona\components\IGraphPersonaProps.ts**
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
@@ -123,8 +123,8 @@ Update the default web part to pass into the React component an instance of the 
         }
         ```
 
-1. Create a new interface that will keep track of the state of the component's state:
-    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphResponse\components\\**.
+1. Create a new interface that will keep track of the component's state:
+    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphResponse\components**.
     1. Add the following code to define a new state object that will be used by the component:
 
         ```ts
@@ -218,7 +218,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get details on the current user as well as their photo. When each of these results complete, they will update the component's state which will trigger the component to rerender.
+1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get details on the current user as well as their photo. When each of these results complete, they will update the component's state which will trigger the component to re-render.
 
     Add the following method to the `GraphPersona` class:
 
@@ -314,7 +314,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
 
 1. Test the web part:
 
-    >NOTE: The SharePoint Framework includes a locally hosted & SharePoint Online hosted workbench for testing custom solutions. However, the workbench will not work the first time when testing solutions that utilize the Microsoft due to nuances with how the workbench operates and authentication requirements. Therefore, the first time you test a Microsoft Graph enabled SPFx solution, you will need to test them in a real modern page.
+    >NOTE: The SharePoint Framework includes a locally hosted & SharePoint Online hosted workbench for testing custom solutions. However, the workbench will not work the first time when testing solutions that utilize the Microsoft Graph due to nuances with how the workbench operates and authentication requirements. Therefore, the first time you test a Microsoft Graph enabled SPFx solution, you will need to test them in a real modern page.
     >
     >Once this has been done and your browser has been cookied by the Azure AD authentication process, you can leverage local webserver and SharePoint Online-hosted workbench for testing the solution.
 
@@ -426,7 +426,7 @@ Update the default web part to pass into the React component an instance of the 
 ### Implement the GraphEventsList React Component
 
 1. After updating the public signature of the **GraphEventsList** component, the public property interface of the component needs to be updated to accept the Microsoft Graph client:
-    1. Open the **src\webparts\graphEventsList\components\IGraphEventsListProps.tsx**
+    1. Open the **src\webparts\graphEventsList\components\IGraphEventsListProps.ts**
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
@@ -437,7 +437,7 @@ Update the default web part to pass into the React component an instance of the 
         }
         ```
 
-1. Create a new interface that will keep track of the state of the component's state:
+1. Create a new interface that will keep track of the component's state:
     1. Create a new file **IGraphEventsListState.ts** and save it to the folder: **src\webparts\graphEventsList\components\\**.
     1. Add the following code to define a new state object that will be used by the component:
 
@@ -512,7 +512,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get current user's calendar events. When each of these results complete, they will update the component's state which will trigger the component to rerender.
+1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get current user's calendar events. When each of these results complete, they will update the component's state which will trigger the component to re-render.
 
     Add the following method to the `GraphEventsList` class:
 
@@ -707,7 +707,7 @@ Update the default web part to pass into the React component an instance of the 
 ### Implement the React Component
 
 1. After updating the public signature of the **GraphTasks** component, the public property interface of the component needs to be updated to accept the Microsoft Graph client:
-    1. Open the **src\webparts\graphTasks\components\IGraphTasksProps.tsx**
+    1. Open the **src\webparts\graphTasks\components\IGraphTasksProps.ts**
     1. Replace the contents with the following code to change the public signature of the component:
 
         ```ts
@@ -718,7 +718,7 @@ Update the default web part to pass into the React component an instance of the 
         }
         ```
 
-1. Create a new interface that will keep track of the state of the component's state:
+1. Create a new interface that will keep track of the component's state:
     1. Create a new file **IGraphTasksState.ts** and save it to the folder: **src\webparts\graphTasks\components\**.
     1. Add the following code to define a new state object that will be used by the component:
 
@@ -793,7 +793,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get current user's calendar events. When each of these results complete, they will update the component's state which will trigger the component to rerender.
+1. The last step is to update the loading, or *mounting* phase of the React component. When the component loads on the page, it should call the Microsoft Graph to get current user's calendar events. When each of these results complete, they will update the component's state which will trigger the component to re-render.
 
     Add the following method to the `GraphEventsList` class:
 
