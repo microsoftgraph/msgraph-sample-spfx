@@ -6,13 +6,13 @@ This module will introduce you to working with the Microsoft Graph REST API to a
 
 In this lab you will create SharePoint Framework client-side web parts that call the Microsoft Graph JavaScript SDK.
 
-* [Lab manual](./Lab.md)
+- [Lab manual](./Lab.md)
 
 ## Demos
 
-* [Show profile details from Microsoft Graph in SPFx client-side web part](./Demos/01-personal-info)
-* [Show calendar events from Microsoft Graph in SPFx client-side web part](./Demos/02-events)
-* [Show Planner tasks from Microsoft Graph in SPFx client-side web part](./Demos/03-tasks)
+- [Show profile details from Microsoft Graph in SPFx client-side web part](./Demos/01-personal-info)
+- [Show calendar events from Microsoft Graph in SPFx client-side web part](./Demos/02-events)
+- [Show Planner tasks from Microsoft Graph in SPFx client-side web part](./Demos/03-tasks)
 
 ## Watch the Module
 
@@ -20,7 +20,7 @@ This module has been recorded and is available in the Office Development YouTube
 
 ## Contributors
 
-|        Roles         |                            Author(s)                             |
+| Roles                | Author(s)                                                        |
 | -------------------- | ---------------------------------------------------------------- |
 | Lab Manuals / Slides | Andrew Connell (Microsoft MVP, Voitanos) @andrewconnell          |
 | QA                   | Julie Turner (Microsoft MVP, Sympraxis Consulting) @juliemturner |
@@ -29,8 +29,9 @@ This module has been recorded and is available in the Office Development YouTube
 
 ## Version history
 
-| Version |        Date        |        Comments        |
+| Version | Date               | Comments               |
 | ------- | ------------------ | ---------------------- |
+| 1.4     | March 7, 2018      | 2019Q3 content refresh |
 | 1.3     | December 12, 2018  | 2019Q2 content refresh |
 | 1.2     | September 18, 2018 | 2019Q1 content refresh |
 | 1.1     | July 3, 2018       | Screencast added       |
@@ -38,6 +39,6 @@ This module has been recorded and is available in the Office Development YouTube
 
 ## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://telemetry.sharepointpnp.com/msgraph-training-spfx" />
