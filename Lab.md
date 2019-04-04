@@ -107,6 +107,7 @@ Update the default web part to pass into the React component an instance of the 
       ReactDom.render(element, this.domElement);
     });
     ```
+
     >Note: the public property of the GraphPersona `graphClient` will be defined in the next step.
 
 ### Implement the GraphPersona React Component
@@ -296,7 +297,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
         ![Screenshot of trusting a SharePoint package](./Images/tenant-app-catalog-02.png)
 
 1. Approve the API permission request:
-    1. Navigate to the SharePoint Admin Portal located at **https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx**, replacing the domain with your SharePoint Online's administration tenant URL.
+    1. Navigate to the SharePoint Admin Portal located at `https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx`, replacing the domain with your SharePoint Online's administration tenant URL.
 
         >Note: At the time of writing, this feature is only in the SharePoint Online preview portal.
 
@@ -526,7 +527,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-### Update the SPFx Package Permission Requests
+### Update the SPFx Package Permission Requests for Events
 
 The last step before testing is to notify SharePoint that upon deployment to production, this app requires permission to the Microsoft Graph to access the user's calendar events.
 
@@ -539,13 +540,14 @@ The last step before testing is to notify SharePoint that upon deployment to pro
       "scope": "Calendars.Read"
     }
     ```
+
 1. Locate the `version` property and increment by 1.
 
     ```json
     "version": "1.0.0.1"
     ```
 
-### Test the Solution
+### Test the Events Solution
 
 1. Create the SharePoint package for deployment:
     1. Build the solution by executing the following on the command line:
@@ -582,7 +584,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
         ![Screenshot of trusting a SharePoint package](./Images/tenant-app-catalog-02.png)
 
 1. Approve the API permission request:
-    1. Navigate to the SharePoint Admin Portal located at **https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx**, replacing the domain with your SharePoint Online's administration tenant URL.
+    1. Navigate to the SharePoint Admin Portal located at `https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx`, replacing the domain with your SharePoint Online's administration tenant URL.
 
         >Note: At the time of writing, this feature is only in the SharePoint Online preview portal.
 
@@ -807,7 +809,7 @@ Update the default web part to pass into the React component an instance of the 
     }
     ```
 
-### Update the SPFx Package Permission Requests
+### Update the SPFx Package Permission Requests for Tasks
 
 The last step before testing is to notify SharePoint that upon deployment to production, this app requires permission to the Microsoft Graph to access the user's calendar events.
 
@@ -829,7 +831,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
     "version": "1.0.0.2"
     ```
 
-### Test the Solution
+### Test the Tasks Solution
 
 1. Create the SharePoint package for deployment:
     1. Build the solution by executing the following on the command line:
@@ -860,7 +862,7 @@ The last step before testing is to notify SharePoint that upon deployment to pro
         1. If you previously uploaded the same package, as in the case from exercise 1, if the **A file with the same name already exists** dialog, select the **Replace It** button.
     1. In the **Do you trust ms-graph-sp-fx-client-side-solution?** dialog, select **Deploy**.
 1. Approve the API permission request:
-    1. Navigate to the SharePoint Admin Portal located at **https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx**, replacing the domain with your SharePoint Online's administration tenant URL.
+    1. Navigate to the SharePoint Admin Portal located at `https://{{REPLACE_WITH_YOUR_TENANTID}}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx`, replacing the domain with your SharePoint Online's administration tenant URL.
 
         >Note: At the time of writing, this feature is only in the SharePoint Online preview portal.
 
