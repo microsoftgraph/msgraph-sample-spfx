@@ -125,7 +125,7 @@ Update the default web part to pass into the React component an instance of the 
         ```
 
 1. Create a new interface that will keep track of the component's state:
-    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphResponse\components**.
+    1. Create a new file **IGraphPersonaState.ts** and save it to the folder: **src\webparts\graphPersona\components**.
     1. Add the following code to define a new state object that will be used by the component:
 
         ```ts
