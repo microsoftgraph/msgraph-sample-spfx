@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'GraphPersonaWebPartStrings';
 import GraphPersona from './components/GraphPersona';
@@ -21,16 +18,16 @@ export default class GraphPersonaWebPart extends BaseClientSideWebPart<IGraphPer
 
   public render(): void {
     this.context.msGraphClientFactory.getClient()
-    .then((client: MSGraphClient): void => {
-      const element: React.ReactElement<IGraphPersonaProps> = React.createElement(
-        GraphPersona,
-        {
-          graphClient: client
-        }
-      );
+      .then((client: MSGraphClient): void => {
+        const element: React.ReactElement<IGraphPersonaProps> = React.createElement(
+          GraphPersona,
+          {
+            graphClient: client
+          }
+        );
 
-      ReactDom.render(element, this.domElement);
-    });
+        ReactDom.render(element, this.domElement);
+      });
   }
 
   protected onDispose(): void {

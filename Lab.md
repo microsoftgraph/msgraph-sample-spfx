@@ -369,7 +369,7 @@ In this exercise you add a client-side web part that uses React, [Fabric React](
 1. Open a command prompt and change to the folder of the existing SPFx solution.
 1. Run the SharePoint Yeoman generator by executing the following command:
 
-    >Note: this lab requires the SharePoint Framework version 1.7 or later
+    >Note: this lab requires the SharePoint Framework version 1.8.2 or later
 
     ```shell
     yo @microsoft/sharepoint

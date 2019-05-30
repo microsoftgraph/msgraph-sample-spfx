@@ -31,4 +31,7 @@ obj
 # Styles Generated Code
 *.scss.ts
 
-.vscode/
+.vscode
+
+# SPFX Folder
+sharepoint
