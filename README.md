@@ -16,7 +16,7 @@ In this lab you will create SharePoint Framework client-side web parts that call
 
 ## Watch the Module
 
-This module has been recorded and is available in the Office Development YouTube channel: [Leveraging the Microsoft Graph JavaScript SDK from the SharePoint Framework](https://www.youtube.com/watch?v=U1JrBwP3vc8)
+This module has been recorded and is available in the Office Development YouTube channel: [Leveraging the Microsoft Graph JavaScript SDK from the SharePoint Framework](https://youtu.be/Z0ddMmgTWdQ)
 
 ## Contributors
 
@@ -28,14 +28,15 @@ This module has been recorded and is available in the Office Development YouTube
 
 ## Version history
 
-| Version |        Date        |        Comments        |
-| ------- | ------------------ | ---------------------- |
-| 1.5     | May 24, 2019       | 2019Q4 content refresh |
-| 1.4     | March 7, 2019      | 2019Q3 content refresh |
-| 1.3     | December 12, 2018  | 2019Q2 content refresh |
-| 1.2     | September 18, 2018 | 2019Q1 content refresh |
-| 1.1     | July 3, 2018       | Screencast added       |
-| 1.0     | June 28, 2018      | New module submitted   |
+| Version |        Date        |                     Comments                     |
+| ------- | ------------------ | ------------------------------------------------ |
+| 1.6     | June 18, 2019      | Updated readme to refreshed screencast recording |
+| 1.5     | May 24, 2019       | 2019Q4 content refresh                           |
+| 1.4     | March 7, 2019      | 2019Q3 content refresh                           |
+| 1.3     | December 12, 2018  | 2019Q2 content refresh                           |
+| 1.2     | September 18, 2018 | 2019Q1 content refresh                           |
+| 1.1     | July 3, 2018       | Screencast added                                 |
+| 1.0     | June 28, 2018      | New module submitted                             |
 
 ## Disclaimer
 
