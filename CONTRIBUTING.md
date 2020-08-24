@@ -34,6 +34,7 @@ While the enthusiasm is appreciated, please don't send pull requests to add new 
 
 Please submit all pull requests to the `master` branch.
 
+<!-- markdownlint-disable MD026 -->
 ## When do changes get published?
 
 Publishing of updates to the [Microsoft Graph tutorials](https://docs.microsoft.com/graph/tutorials) site is not automatic. Changes must first be promoted to the `live` branch, then a build must be triggered by the site admins. This is typically done on an "as-needed" basis.
