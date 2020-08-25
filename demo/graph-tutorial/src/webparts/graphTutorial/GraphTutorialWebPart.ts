@@ -3,6 +3,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
+import { AadTokenProvider } from '@microsoft/sp-http';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -16,23 +17,28 @@ export interface IGraphTutorialWebPartProps {
 export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTutorialWebPartProps> {
 
   public render(): void {
-    this.domElement.innerHTML = `
-      <div class="${ styles.graphTutorial }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>`;
+    this.context.aadTokenProviderFactory
+      .getTokenProvider()
+      .then((provider: AadTokenProvider)=> {
+        provider
+          .getToken('https://graph.microsoft.com')
+          .then((token: string) => {
+            this.domElement.innerHTML = `
+            <div class="${ styles.graphTutorial }">
+              <div class="${ styles.container }">
+                <div class="${ styles.row }">
+                  <div class="${ styles.column }">
+                    <span class="${ styles.title }">Welcome to SharePoint!</span>
+                    <p><code style="word-break: break-all;">${ token }</code></p>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+          });
+      });
   }
 
+  // @ts-ignore
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }

@@ -23,6 +23,16 @@ In this tutorial, you'll create a [SharePoint client-side web part](https://docs
     - **What is your Web part description?** `GraphTutorial description`
     - **Which framework would you like to use?** `No JavaScript framework`
 
+1. Run the following command to update the TypeScript version in the project to 3.7.
+
+    ```Shell
+    npm install @microsoft/rush-stack-compiler-3.7 --save-dev
+    ```
+
+1. Open **./tsconfig.json** and replace `rush-stack-compiler-3.3` with `rush-stack-compiler-3.7`.
+
+1. Open **./tslint.json** and remove the `"no-use-before-declare": true,` line. The `no-use-before-declare` rule is deprecated and will cause an error during the build process.
+
 ## Install dependencies
 
 Before moving on, install some additional NPM packages that you will use later.
