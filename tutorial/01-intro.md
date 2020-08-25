@@ -26,10 +26,10 @@ Your Microsoft 365 tenant should be [setup for SharePoint Framework development]
 > [!NOTE]
 > This tutorial was written with the following versions of the above tools. The steps in this guide may work with other versions, but that has not been tested.
 >
-> - Node.js
-> - Yeoman
-> - Gulp
-> - Yeoman Sharepoint generator
+> - Node.js 10.22.0
+> - Yeoman 3.1.1
+> - Gulp 4.0.2
+> - Yeoman SharePoint generator 1.11.0
 
 ## Feedback
 
