@@ -39,8 +39,9 @@ Before moving on, install some additional NPM packages that you will use later.
 
 - [Microsoft Graph TypeScript definitions](https://github.com/microsoftgraph/msgraph-typescript-typings) to provide Intellisense for Microsoft Graph objects.
 - [Microsoft Graph Toolkit](https://docs.microsoft.com/graph/toolkit/overview) to provide UI components for the web part.
+- [date-fns](https://date-fns.org/) for helpful functions for working with dates.
 
 ```Shell
 npm install @microsoft/microsoft-graph-types@1.16.0 --save-dev
-npm install @microsoft/mgt@1.3.4
+npm install @microsoft/mgt@1.3.4 date-fns @2.15.0
 ```

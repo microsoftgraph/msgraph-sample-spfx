@@ -31,9 +31,12 @@ The SharePoint Framework eliminates the need to register an application in Azure
 
 The `Calendars.Read` permission allows your web part to retrieve the user's calendar from Microsoft Graph. The other permissions are used by components in the Microsoft Graph Toolkit to render information about event attendees and organizers.
 
-## Test token acquisition
+## Optional: Test token acquisition
 
-Let's add some temporary code to the web part to test token acquisition. 
+> [!NOTE]
+> The rest of the steps on this page are optional. If you'd prefer to get to the Microsoft Graph coding right away, you can proceed to [Get a calendar view](04-get-calendar-view.md).
+
+Let's add some temporary code to the web part to test token acquisition.
 
 1. Open **./src/webparts/graphTutorial/GraphTutorialWebPart.ts** and add the following `import` statement at the top of the file.
 

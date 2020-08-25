@@ -17,7 +17,8 @@
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
-    "@microsoft/sp-webpart-base": "1.11.0"
+    "@microsoft/sp-webpart-base": "1.11.0",
+    "date-fns": "^2.15.0"
   },
   "devDependencies": {
     "@microsoft/microsoft-graph-types": "^1.16.0",
