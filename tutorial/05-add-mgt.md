@@ -32,7 +32,7 @@ The toolkit provides an [Agenda component](https://docs.microsoft.com/graph/tool
 
 1. Build, package, and re-upload the web part, then refresh the page where you are testing it.
 
-    ![A screenshot of the web part with the Agenda component](images/mgt-agenda.md)
+    ![A screenshot of the web part with the Agenda component](images/mgt-agenda.png)
 
 ## An alternate approach
 

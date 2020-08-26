@@ -34,7 +34,7 @@ The `Calendars.ReadWrite` permission allows your web part to retrieve the user's
 ## Optional: Test token acquisition
 
 > [!NOTE]
-> The rest of the steps on this page are optional. If you'd prefer to get to the Microsoft Graph coding right away, you can proceed to [Get a calendar view](04-get-calendar-view.md).
+> The rest of the steps on this page are optional. If you'd prefer to get to the Microsoft Graph coding right away, you can proceed to [Get a calendar view](/graph/tutorials/spfx?tutorial-step=3).
 
 Let's add some temporary code to the web part to test token acquisition.
 

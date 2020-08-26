@@ -29,8 +29,8 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
   }
   // </onInitSnippet>
 
-  // <renderSnippet>
   /*
+  // <renderSnippet>
   public render(): void {
     this.context.msGraphClientFactory
       .getClient()
@@ -65,8 +65,9 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
             }
           });
       });
-  } */
+  }
   // </renderSnippet>
+  */
 
   // <alternateRenderSnippet>
   public render(): void {

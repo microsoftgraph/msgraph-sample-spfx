@@ -60,13 +60,6 @@ Because it wraps the existing JavaScript library, its usage is the same, and it'
     gulp package-solution --ship
     ```
 
-1. Run the following two commands in your CLI to build and package your web part.
-
-    ```Shell
-    gulp bundle --ship
-    gulp package-solution --ship
-    ```
-
 1. Open your browser and go to your tenant's SharePoint App Catalog. Select the **Apps for SharePoint** menu item on the left-hand side.
 
 1. Upload the **./sharepoint/solution/graph-tutorial.sppkg file.
