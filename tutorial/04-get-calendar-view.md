@@ -48,6 +48,7 @@ Because it wraps the existing JavaScript library, its usage is the same, and it'
     - It uses `this.context.msGraphClientFactory.getClient` to get an authenticated **MSGraphClient** object.
     - It calls the `/me/calendarView` endpoint, setting the `startDateTime` and `endDateTime` query parameters to the start and end of the current week.
     - It uses `select` to limit which fields are returned, requesting only the fields the app uses.
+    - It uses `orderby` to sort the events by their start time.
     - It uses `top` to limit the results to 25 events.
 
 ## Deploy the web part

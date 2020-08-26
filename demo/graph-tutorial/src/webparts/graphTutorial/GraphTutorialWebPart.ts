@@ -8,6 +8,7 @@ import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { startOfWeek, endOfWeek } from 'date-fns';
+import { Providers, SharePointProvider, MgtAgenda } from '@microsoft/mgt';
 
 import styles from './GraphTutorialWebPart.module.scss';
 import * as strings from 'GraphTutorialWebPartStrings';
@@ -18,7 +19,18 @@ export interface IGraphTutorialWebPartProps {
 
 export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTutorialWebPartProps> {
 
+  // <onInitSnippet>
+  protected async onInit() {
+    // Set the toolkit's global auth provider to
+    // SharePoint provider, allowing it to use the Graph
+    // access token
+    Providers.globalProvider =
+      new SharePointProvider(this.context);
+  }
+  // </onInitSnippet>
+
   // <renderSnippet>
+  /*
   public render(): void {
     this.context.msGraphClientFactory
       .getClient()
@@ -32,6 +44,7 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
         graphClient
           .api(`/me/calendarView?startDateTime=${weekStart.toISOString()}&endDateTime=${weekEnd.toISOString()}`)
           .select('subject,organizer,start,end,location,attendees')
+          .orderby('start/dateTime')
           .top(25)
           .get((error: any, events: any) => {
             this.domElement.innerHTML = `
@@ -52,25 +65,44 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
             }
           });
       });
-  }
+  } */
   // </renderSnippet>
+
+  // <alternateRenderSnippet>
+  public render(): void {
+    // Get current date
+    const now = new Date();
+    // Get the start of the week based on current date
+    const weekStart = startOfWeek(now);
+
+    this.domElement.innerHTML = `
+    <div class="${ styles.graphTutorial }">
+      <div class="${ styles.container }">
+        <div class="${ styles.row }">
+          <div class="${ styles.column }">
+            <mgt-agenda
+              date="${weekStart.toISOString()}"
+              days="7"
+              group-by-day></mgt-agenda>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+  // </alternateRenderSnippet>
 
   // <renderCalendarViewSnippet>
   private renderCalendarView(events: MicrosoftGraph.Event[]) : void {
     const viewContainer = this.domElement.querySelector('#calendarView');
-    let html = '';
 
-    // Temporary: print events as a list
-    for(const event of events) {
-      html += `
-        <p class="${ styles.description }">Subject: ${event.subject}</p>
-        <p class="${ styles.description }">Organizer: ${event.organizer.emailAddress.name}</p>
-        <p class="${ styles.description }">Start: ${event.start.dateTime}</p>
-        <p class="${ styles.description }">End: ${event.end.dateTime}</p>
-        `;
-    }
+    // Create an agenda component from the toolkit
+    let agenda = new MgtAgenda();
+    // Set the events
+    agenda.events = events;
+    // Group events by day
+    agenda.groupByDay = true;
 
-    viewContainer.innerHTML = html;
+    viewContainer.appendChild(agenda);
   }
   // </renderCalendarViewSnippet>
 
