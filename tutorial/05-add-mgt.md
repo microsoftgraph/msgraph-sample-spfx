@@ -10,6 +10,10 @@ The toolkit provides an [Agenda component](https://docs.microsoft.com/graph/tool
 
     :::code language="css" source="../demo/graph-tutorial/src/webparts/graphTutorial/GraphTutorialWebPart.module.scss" id="rowScssSnippet" highlight="4":::
 
+1. Add the following entry inside the `.graphTutorial` entry.
+
+    :::code language="css" source="../demo/graph-tutorial/src/webparts/graphTutorial/GraphTutorialWebPart.module.scss" id="addSocialBtnSnippet":::
+
 1. Open **./src/webparts/graphTutorial/GraphTutorialWebPart.ts** and add the following `import` statement at the top of the file.
 
     ```typescript
@@ -46,6 +50,15 @@ All Microsoft Graph Toolkit components are capable of making all of the relevant
     :::code language="typescript" source="../demo/graph-tutorial/src/webparts/graphTutorial/GraphTutorialWebPart.ts" id="alternateRenderSnippet":::
 
     Now, instead of making an API call in `render`, you simply add an `mgt-agenda` element directly into the HTML. By setting `date` to the start of the week, and `days` to 7, the component will make the same API call the previous version of `render` was making.
+
+1. Add the following empty function to the **GraphTutorialWebPart** class.
+
+    ```typescript
+    private async addSocialToCalendar() {}
+    ```
+
+    > [!NOTE]
+    > We also added an **Add team social** button to the web part, and added the `addSocialToCalendar` method as an event listener.  You'll implement the code behind that in the next section. For now, we just want the code to compile.
 
 1. Build, package, and re-upload the web part, then refresh the page where you are testing it. The view should be the same as your previous test.
 

@@ -7,7 +7,7 @@ import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { startOfWeek, endOfWeek } from 'date-fns';
+import { startOfWeek, endOfWeek, setDay, set } from 'date-fns';
 import { Providers, SharePointProvider, MgtAgenda } from '@microsoft/mgt';
 
 import styles from './GraphTutorialWebPart.module.scss';
@@ -80,6 +80,9 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
       <div class="${ styles.container }">
         <div class="${ styles.row }">
           <div class="${ styles.column }">
+            <button class="${ styles.button }" id="${ styles.addSocialBtn }">
+              <span class="${ styles.label }">Add team social</span>
+            </button>
             <mgt-agenda
               date="${weekStart.toISOString()}"
               days="7"
@@ -88,6 +91,9 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
         </div>
       </div>
     </div>`;
+
+    this.domElement.querySelector(`#${styles.addSocialBtn}`)
+      .addEventListener('click', this.addSocialToCalendar.bind(this));
   }
   // </alternateRenderSnippet>
 
@@ -116,6 +122,58 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
     <code style="word-break: break-all;">${JSON.stringify(error, null, 2)}</code>`;
   }
   // </renderGraphErrorSnippet>
+
+  // <addSocialToCalendarSnippet>
+  private async addSocialToCalendar() {
+    const graphClient = await this.context.msGraphClientFactory.getClient();
+
+    // Get current date
+    const now = new Date();
+
+    // Set start time to next Friday
+    // at 4 PM
+    const socialHourStart = set(
+      setDay(now, 5),
+      {
+        hours: 16,
+        minutes: 0,
+        seconds:0,
+        milliseconds: 0
+      });
+
+    // Create a new event
+    const socialHour: MicrosoftGraph.Event = {
+      subject: 'Team Social Hour',
+      body: {
+        contentType: 'text',
+        content: 'Come join the rest of the team for our end-of-week social hour.'
+      },
+      location: {
+        displayName: 'Break room'
+      },
+      start: {
+        dateTime: socialHourStart.toISOString(),
+        timeZone: 'UTC'
+      },
+      end: {
+        dateTime: set(socialHourStart, { hours: 17 }).toISOString(),
+        timeZone: 'UTC'
+      }
+    };
+
+    try {
+      // POST /me/events
+      await graphClient
+        .api('/me/events')
+        .post(socialHour);
+
+      // Refresh the view
+      this.render();
+    } catch (error) {
+      this.renderGraphError(error);
+    }
+  }
+  // </addSocialToCalendarSnippet>
 
   // @ts-ignore
   protected get dataVersion(): Version {

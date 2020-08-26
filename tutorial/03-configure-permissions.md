@@ -12,7 +12,7 @@ The SharePoint Framework eliminates the need to register an application in Azure
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
-        "scope": "Calendars.Read"
+        "scope": "Calendars.ReadWrite"
       },
       {
         "resource": "Microsoft Graph",
@@ -29,7 +29,7 @@ The SharePoint Framework eliminates the need to register an application in Azure
     ]
     ```
 
-The `Calendars.Read` permission allows your web part to retrieve the user's calendar from Microsoft Graph. The other permissions are used by components in the Microsoft Graph Toolkit to render information about event attendees and organizers.
+The `Calendars.ReadWrite` permission allows your web part to retrieve the user's calendar and add events using Microsoft Graph. The other permissions are used by components in the Microsoft Graph Toolkit to render information about event attendees and organizers.
 
 ## Optional: Test token acquisition
 
