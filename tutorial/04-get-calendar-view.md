@@ -62,7 +62,7 @@ Because it wraps the existing JavaScript library, its usage is the same, and it'
 
 1. Open your browser and go to your tenant's SharePoint App Catalog. Select the **Apps for SharePoint** menu item on the left-hand side.
 
-1. Upload the **./sharepoint/solution/graph-tutorial.sppkg file.
+1. Upload the **./sharepoint/solution/graph-tutorial.sppkg** file.
 
 1. In the **Do you trust...** prompt, confirm that the prompt lists the 4 Microsoft Graph permissions you set in the **package-solution.json** file. Select **Make this solution available to all sites in the organization**, then select **Deploy**.
 
