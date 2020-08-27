@@ -16,7 +16,7 @@ Because it wraps the existing JavaScript library, its usage is the same, and it'
 
 1. Add the following function to the **GraphTutorialWebPart** class to render an error.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/webparts/graphTutorial/GraphTutorialWebPart.ts" id="renderErrorSnippet":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/webparts/graphTutorial/GraphTutorialWebPart.ts" id="renderGraphErrorSnippet":::
 
 1. Add the following function to print out the events in the user's calendar.
 
