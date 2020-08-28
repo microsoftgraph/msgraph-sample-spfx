@@ -16,7 +16,7 @@ The SharePoint Framework eliminates the need to register an application in Azure
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Users.ReadBasic.All"
+        "scope": "User.ReadBasic.All"
       },
       {
         "resource": "Microsoft Graph",

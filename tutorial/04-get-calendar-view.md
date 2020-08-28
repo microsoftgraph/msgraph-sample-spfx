@@ -11,7 +11,7 @@ Because it wraps the existing JavaScript library, its usage is the same, and it'
     ```typescript
     import { MSGraphClient } from '@microsoft/sp-http';
     import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-    import { startOfWeek, endOfWeek, setDay } from 'date-fns';
+    import { startOfWeek, endOfWeek, setDay, set } from 'date-fns';
     ```
 
 1. Add the following function to the **GraphTutorialWebPart** class to render an error.
