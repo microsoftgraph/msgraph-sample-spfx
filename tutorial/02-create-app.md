@@ -42,6 +42,6 @@ Before moving on, install some additional NPM packages that you will use later.
 - [date-fns](https://date-fns.org/) for helpful functions for working with dates.
 
 ```Shell
-npm install @microsoft/microsoft-graph-types@1.16.0 --save-dev
-npm install @microsoft/mgt@1.3.4 date-fns @2.15.0
+npm install @microsoft/microsoft-graph-types@1.17.0 --save-dev
+npm install @microsoft/mgt@1.3.4 date-fns @2.16.0
 ```
