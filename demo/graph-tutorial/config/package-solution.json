@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "graph-tutorial-client-side-solution",
+    "id": "6aebac0e-b153-43f6-a8ef-37cfbc4933b5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Contacts.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "People.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/graph-tutorial.sppkg"
+  }
+}
