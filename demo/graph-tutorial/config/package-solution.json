@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "graph-tutorial-client-side-solution",
-    "id": "6aebac0e-b153-43f6-a8ef-37cfbc4933b5",
+    "id": "cfcc6cc6-b14d-4b64-baf8-5e2720de159f",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
