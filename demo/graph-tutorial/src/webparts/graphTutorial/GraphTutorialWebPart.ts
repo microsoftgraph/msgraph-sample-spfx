@@ -1,12 +1,15 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-import { MSGraphClient } from '@microsoft/sp-http';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
+import { MSGraphClient } from '@microsoft/sp-http';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { startOfWeek, endOfWeek, setDay, set } from 'date-fns';
 import { Providers, SharePointProvider, MgtAgenda } from '@microsoft/mgt';
 
@@ -176,7 +179,6 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
   }
   // </addSocialToCalendarSnippet>
 
-  // @ts-ignore
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }

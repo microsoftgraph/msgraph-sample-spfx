@@ -48,25 +48,25 @@ Let's add some temporary code to the web part to test token acquisition.
 
     ```typescript
     public render(): void {
-    this.context.aadTokenProviderFactory
-      .getTokenProvider()
-      .then((provider: AadTokenProvider)=> {
-      provider
-        .getToken('https://graph.microsoft.com')
-        .then((token: string) => {
-          this.domElement.innerHTML = `
-          <div class="${ styles.graphTutorial }">
-            <div class="${ styles.container }">
-              <div class="${ styles.row }">
-                <div class="${ styles.column }">
-                  <span class="${ styles.title }">Welcome to SharePoint!</span>
-                  <p><code style="word-break: break-all;">${ token }</code></p>
+      this.context.aadTokenProviderFactory
+        .getTokenProvider()
+        .then((provider: AadTokenProvider)=> {
+        provider
+          .getToken('https://graph.microsoft.com')
+          .then((token: string) => {
+            this.domElement.innerHTML = `
+            <div class="${ styles.graphTutorial }">
+              <div class="${ styles.container }">
+                <div class="${ styles.row }">
+                  <div class="${ styles.column }">
+                    <span class="${ styles.title }">Welcome to SharePoint!</span>
+                    <p><code style="word-break: break-all;">${ token }</code></p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>`;
+            </div>`;
+          });
         });
-      });
     }
     ```
 
@@ -79,7 +79,7 @@ Let's add some temporary code to the web part to test token acquisition.
     gulp package-solution --ship
     ```
 
-1. Open your browser and go to your tenant's SharePoint App Catalog. Select the **Apps for SharePoint** menu item on the left-hand side.
+1. Open your browser and go to your tenant's [SharePoint App Catalog](https://docs.microsoft.com/sharepoint/use-app-catalog). Select the **Apps for SharePoint** menu item on the left-hand side.
 
 1. Upload the **./sharepoint/solution/graph-tutorial.sppkg** file.
 
