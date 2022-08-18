@@ -4,6 +4,29 @@ This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access
 
 > **NOTE:** This sample was originally built from a tutorial published on the [Microsoft Graph tutorials](https://docs.microsoft.com/graph/tutorials) page. That tutorial has been removed.
 
+## Prerequisites
+
+Before you start this tutorial, you should have the following tools installed on your development machine.
+
+- [Node.js](https://nodejs.org/en/download/releases/)
+- [Yeoman](https://yeoman.io/)
+- [Gulp](https://gulpjs.com/)
+- [Yeoman SharePoint generator](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator)
+
+You can find more details about requirements for SharePoint Framework development at [Set up your SharePoint Framework development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment).
+
+You should also have a Microsoft work or school account, with access to a global administrator account in the same organization. If you don't have a Microsoft account, you can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Microsoft 365 subscription.
+
+Your Microsoft 365 tenant should be [setup for SharePoint Framework development](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant), with an app catalog and testing site created before you start this tutorial.
+
+> [!NOTE]
+> This tutorial was written with the following versions of the above tools. The steps in this guide may work with other versions, but that has not been tested.
+>
+> - Node.js 14.15.0
+> - Yeoman 4.1.0
+> - Gulp 4.0.2
+> - Yeoman SharePoint generator 1.12.1
+
 ## Running the sample
 
 The code for this sample is in the [demo](demo) folder. Instructions to configure and run the sample can be found in the [README](demo/README.md) in that folder.
