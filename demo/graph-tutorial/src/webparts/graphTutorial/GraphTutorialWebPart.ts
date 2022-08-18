@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import { AadTokenProvider } from '@microsoft/sp-http';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -32,7 +33,6 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
   }
   // </onInitSnippet>
 
-  /*
   // <renderSnippet>
   public render(): void {
     this.context.msGraphClientFactory
@@ -70,7 +70,7 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
       });
   }
   // </renderSnippet>
-  */
+  
 
   // <alternateRenderSnippet>
   public render(): void {
