@@ -11,7 +11,7 @@ Before you start this tutorial, you should have the following tools installed on
 - [Node.js](https://nodejs.org/en/download/releases/)
 - [Yeoman](https://yeoman.io/)
 - [Gulp](https://gulpjs.com/)
-- [Yeoman SharePoint generator](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator)
+- [Yeoman SharePoint generator](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/yeoman-generator-for-spfx-intro)
 
 You can find more details about requirements for SharePoint Framework development at [Set up your SharePoint Framework development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment).
 
