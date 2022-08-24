@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-tutorial-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphTutorial/GraphTutorialWebPart.js",
+          "manifest": "./src/webparts/graphTutorial/GraphTutorialWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphTutorialWebPartStrings": "lib/webparts/graphTutorial/loc/{locale}.js"
+  }
+}
