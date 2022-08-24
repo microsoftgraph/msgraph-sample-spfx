@@ -1,8 +1,17 @@
+---
+page_type: sample
+description: This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from SharePoint Framework (SPFX) applications.
+products:
+- ms-graph
+- microsoft-graph-calendar-api
+- office-exchange-online
+languages:
+- typescript
+---
+
 # Microsoft Graph sample SharePoint Framework app
 
 This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from SharePoint Framework (SPFX) applications.
-
-> **NOTE:** This sample was originally built from a tutorial published on the [Microsoft Graph tutorials](https://docs.microsoft.com/graph/tutorials) page. That tutorial has been removed.
 
 ## Prerequisites
 
@@ -22,27 +31,39 @@ Your Microsoft 365 tenant should be [setup for SharePoint Framework development]
 > [!NOTE]
 > This tutorial was written with the following versions of the above tools. The steps in this guide may work with other versions, but that has not been tested.
 >
-> - Node.js 14.15.0
-> - Yeoman 4.1.0
-> - Gulp 4.0.2
-> - Yeoman SharePoint generator 1.12.1
+> - Node.js 8.11.0
+> - Yeoman 4.3.0
+> - Gulp 2.3.0
+> - Yeoman SharePoint generator 1.15.2
 
-## Running the sample
+## Deploy the web part
 
-The code for this sample is in the [demo](demo) folder. Instructions to configure and run the sample can be found in the [README](demo/README.md) in that folder.
+1. Run the following two commands in your CLI to build and package your web part.
 
-## Version history
+    ```Shell
+    gulp bundle --ship
+    gulp package-solution --ship
+    ```
 
-| Version |        Date        |                     Comments                     |
-| ------- | ------------------ | ------------------------------------------------ |
-| 2.0     | August 28, 2020    | Converted lab to tutorial on docs.microsoft.com  |
-| 1.6     | June 18, 2019      | Updated readme to refreshed screencast recording |
-| 1.5     | May 24, 2019       | 2019Q4 content refresh                           |
-| 1.4     | March 7, 2019      | 2019Q3 content refresh                           |
-| 1.3     | December 12, 2018  | 2019Q2 content refresh                           |
-| 1.2     | September 18, 2018 | 2019Q1 content refresh                           |
-| 1.1     | July 3, 2018       | Screencast added                                 |
-| 1.0     | June 28, 2018      | New module submitted                             |
+1. Open your browser and go to your tenant's [SharePoint App Catalog](https://docs.microsoft.com/sharepoint/use-app-catalog). Select the **Apps for SharePoint** menu item on the left-hand side.
+
+1. Upload the **./sharepoint/solution/graph-tutorial.sppkg** file.
+
+1. In the **Do you trust...** prompt, confirm that the prompt lists the 4 Microsoft Graph permissions you set in the **package-solution.json** file. Select **Make this solution available to all sites in the organization**, then select **Deploy**.
+
+1. Go to the [SharePoint admin center](https://admin.microsoft.com/sharepoint?page=classicfeatures&modern=true) using a tenant administrator.
+
+1. In the left-hand menu, select **Advanced**, then **API access**.
+
+1. Select each of the pending requests from the **graph-tutorial-client-side-solution** package and choose **Approve**.
+
+### Test the web part
+
+1. Go to a SharePoint site where you want to test the web part. Create a new page to test the web part on.
+
+1. Use the web part picker to find the **GraphTutorial** web part and add it to the page.
+
+1. The access token is printed below the **Welcome to SharePoint!** message in the web part. You can copy this token and parse it at [https://jwt.ms/](https://jwt.ms/) to confirm that it contains the permission scopes required by the web part.
 
 ## Code of conduct
 
