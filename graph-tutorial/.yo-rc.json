@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "graph-tutorial",
+    "libraryId": "45d822e0-f4f4-43f6-bf40-abf2bd2f2eae",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "graph-tutorial",
+    "solutionShortDescription": "graph-tutorial description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
