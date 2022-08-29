@@ -1,3 +1,4 @@
+// Copyright (c) Microsoft Corporation.
 declare interface IGraphTutorialWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;

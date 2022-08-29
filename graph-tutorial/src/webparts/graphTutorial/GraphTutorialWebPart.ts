@@ -1,3 +1,4 @@
+// Copyright (c) Microsoft Corporation.
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { startOfWeek, endOfWeek, setDay, set } from 'date-fns';
 import { Providers, SharePointProvider, MgtAgenda } from '@microsoft/mgt';
