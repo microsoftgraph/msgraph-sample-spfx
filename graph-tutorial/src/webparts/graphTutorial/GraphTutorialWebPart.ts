@@ -12,7 +12,6 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-//import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './GraphTutorialWebPart.module.scss';
 import * as strings from 'GraphTutorialWebPartStrings';
