@@ -77,6 +77,35 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
       });  
   }
 
+  // <alternateRenderSnippet>
+  public render(): void {
+    // Get current date
+    const now = new Date();
+    // Get the start of the week based on current date
+    const weekStart = startOfWeek(now);
+
+    this.domElement.innerHTML = `
+    <div class="${ styles.graphTutorial }">
+      <div class="${ styles.container }">
+        <div class="${ styles.row }">
+          <div class="${ styles.column }">
+            <button class="${ styles.button }" id="${ styles.addSocialBtn }">
+              <span class="${ styles.label }">Add team social</span>
+            </button>
+            <mgt-agenda
+              date="${weekStart.toISOString()}"
+              days="7"
+              group-by-day></mgt-agenda>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+    this.domElement.querySelector(`#${styles.addSocialBtn}`)
+      .addEventListener('click', this.addSocialToCalendar.bind(this));
+  }
+  // </alternateRenderSnippet>
+
   // <renderGraphErrorSnippet>
   private renderGraphError(error: any): void { // eslint-disable-line
     const viewContainer = this.domElement.querySelector('#calendarView'); 
