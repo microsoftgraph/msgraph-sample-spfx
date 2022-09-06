@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@microsoft/mgt": "^2.6.0",
-    "@microsoft/microsoft-graph-types": "^2.23.0",
+    "@microsoft/microsoft-graph-types": "^2.24.0",
     "@microsoft/sp-core-library": "1.15.2",
     "@microsoft/sp-lodash-subset": "1.15.2",
     "@microsoft/sp-office-ui-fabric-core": "1.15.2",
