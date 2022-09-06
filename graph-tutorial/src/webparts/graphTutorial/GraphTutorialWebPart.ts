@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-import { startOfWeek, endOfWeek, setDay, set } from 'date-fns';
+import { startOfWeek, endOfWeek, setDay, set } from 'date-fns'; // eslint-disable-line
 import { Providers, SharePointProvider, MgtAgenda } from '@microsoft/mgt';
-import { MSGraphClientV3 } from '@microsoft/sp-http';
-
-
+import { MSGraphClientV3 } from '@microsoft/sp-http'; // eslint-disable-line
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
@@ -36,6 +36,7 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
   // </onInitSnippet>
 
   // <renderSnippet>
+  /*
   public render(): void {
     this.context.msGraphClientFactory
       .getClient('3')
@@ -69,12 +70,13 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
           })
           .catch((reason: Error) => {
             this.renderGraphError(reason);
-          });  
+          });
       })
       .catch((reason: Error) => {
         this.renderGraphError(reason);
-      });  
+      });
   }
+  */
 
   // <alternateRenderSnippet>
   public render(): void {
@@ -107,7 +109,7 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
 
   // <renderGraphErrorSnippet>
   private renderGraphError(error: any): void { // eslint-disable-line
-    const viewContainer = this.domElement.querySelector('#calendarView'); 
+    const viewContainer = this.domElement.querySelector('#calendarView');
 
     // Basic error display
     viewContainer.innerHTML = `
@@ -134,10 +136,10 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
     // <addSocialToCalendarSnippet>
     private async addSocialToCalendar(): Promise<void>   {
       const graphClient = await this.context.msGraphClientFactory.getClient('3');
-  
+
       // Get current date
       const now = new Date();
-  
+
       // Set start time to next Friday
       // at 4 PM
       const socialHourStart = set(
@@ -148,7 +150,7 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
           seconds:0,
           milliseconds: 0
         });
-  
+
       // Create a new event
       const socialHour: MicrosoftGraph.Event = {
         subject: 'Team Social Hour',
@@ -168,13 +170,13 @@ export default class GraphTutorialWebPart extends BaseClientSideWebPart<IGraphTu
           timeZone: 'UTC'
         }
       };
-  
+
       try {
         // POST /me/events
         await graphClient
           .api('/me/events')
           .post(socialHour);
-  
+
         // Refresh the view
         this.render();
       } catch (error) {
