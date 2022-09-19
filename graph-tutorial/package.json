@@ -29,7 +29,7 @@
     "@rushstack/eslint-config": "3.0.1",
     "@types/webpack-env": "~1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.34.0",
+    "@typescript-eslint/parser": "^5.37.0",
     "ajv": "^6.12.5",
     "eslint": "^8.23.1",
     "gulp": "4.0.2",
