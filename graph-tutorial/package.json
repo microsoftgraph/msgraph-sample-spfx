@@ -10,7 +10,7 @@
     "lint": "eslint -c .eslintrc.js --ext .ts src "
   },
   "dependencies": {
-    "@microsoft/mgt": "^2.6.1",
+    "@microsoft/mgt": "^2.6.2",
     "@microsoft/microsoft-graph-types": "^2.25.0",
     "@microsoft/sp-core-library": "1.15.2",
     "@microsoft/sp-lodash-subset": "1.15.2",
