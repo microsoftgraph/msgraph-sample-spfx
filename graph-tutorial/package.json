@@ -31,7 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.1",
     "ajv": "^6.12.5",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "gulp": "4.0.2",
     "typescript": "4.8.4"
   }
