@@ -13,7 +13,7 @@
     "@microsoft/mgt": "^2.8.0",
     "@microsoft/microsoft-graph-types": "^2.25.0",
     "@microsoft/sp-core-library": "1.15.2",
-    "@microsoft/sp-lodash-subset": "1.16.0",
+    "@microsoft/sp-lodash-subset": "1.16.1",
     "@microsoft/sp-office-ui-fabric-core": "1.16.0",
     "@microsoft/sp-property-pane": "1.16.0",
     "@microsoft/sp-webpart-base": "1.15.2",
