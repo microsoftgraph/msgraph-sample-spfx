@@ -33,6 +33,6 @@
     "ajv": "^6.12.5",
     "eslint": "^8.33.0",
     "gulp": "4.0.2",
-    "typescript": "4.9.4"
+    "typescript": "4.9.5"
   }
 }
