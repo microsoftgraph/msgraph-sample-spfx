@@ -12,7 +12,7 @@
   "dependencies": {
     "@microsoft/mgt": "^2.9.2",
     "@microsoft/microsoft-graph-types": "^2.26.0",
-    "@microsoft/sp-core-library": "1.15.2",
+    "@microsoft/sp-core-library": "1.18.1",
     "@microsoft/sp-lodash-subset": "1.16.1",
     "@microsoft/sp-office-ui-fabric-core": "1.17.0",
     "@microsoft/sp-property-pane": "1.17.1",
